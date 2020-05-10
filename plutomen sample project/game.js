@@ -253,11 +253,17 @@ class Game{
 
 				for(let r=row-1; r<=row+1; r++){
 					if (!boundaryCheck(r, 0)) continue;
+					if(r===row){
 					for(let c=col-1; c<=col+1; c++){
 						if (!boundaryCheck(r, c)) continue;
 						connected.concat(this.getConnectedSprites(index, r, c, connected));
 					}
-				}	
+				}else{
+						let c = col;
+						if (!boundaryCheck(r, c)) continue;
+						connected.concat(this.getConnectedSprites(index, r, c, connected));
+					}
+				}
 			}
 		}catch(e){
 			console.log(`Problem with ${row},`)
